@@ -22,13 +22,13 @@ static class GenStudent{
   Integer readcount = 0;
    File names = new File(fname);
            	  if(names.exists()) {
-		            System.out.println("Names file exists");
+		           // System.out.println("Names file exists");
 			    try (FileReader names_reader = new FileReader(names)){
 			    Scanner names_scanner = new Scanner (names_reader);
 			    while(names_scanner.hasNextLine()){
 			    readcount++;
 			    NamesList.add(names_scanner.nextLine());
-			    }  System.out.printf("%d names readed %n",readcount);
+			    } // System.out.printf("%d names readed %n",readcount);
 			      }
 			    catch (IOException ex){
 			       System.out.println(ex.getMessage());
@@ -88,11 +88,11 @@ static class GenStudent{
     Random rnd = new Random();
         switch (rnd.nextInt(3)){
         case 1:
-        return ";+380629"+Integer.toString(rnd.nextInt(9999999));
+        return ";066"+Integer.toString(rnd.nextInt(9999999));
         case 2:
-        return ";+38050"+Integer.toString(rnd.nextInt(9999999));
+        return ";050"+Integer.toString(rnd.nextInt(9999999));
         case 3:
-        return ";+38097"+Integer.toString(rnd.nextInt(9999999));
+        return ";097"+Integer.toString(rnd.nextInt(9999999));
         } return""; }
    
    String genAdress(){
@@ -100,7 +100,7 @@ static class GenStudent{
     Integer house = rnd.nextInt(200);
     Integer appartament = rnd.nextInt(100);
     String s=this.getRandom();
-    while (!this.isMale(s)) s=this.getRandom();
+    while (this.isMale(s)) s=this.getRandom();
     s=";ул."+makeSecName(s)+";"+Integer.toString(house)+";"+Integer.toString(appartament);
     return s;
    }
@@ -120,11 +120,12 @@ return;}
 
 for (int i=0;i<Integer.parseInt(param[1]);i++){
     String s = new String(names.getRandom());
-    System.out.printf("%s;%s;%s%s%s;%n",
+    System.out.printf("%s;%s;%s%s%s%n",
     s,//name
     names.makeSecName(s),//surename
-    names.genBrthDate(),
     names.genPhone(),
+    names.genBrthDate(),
+  
     names.genAdress()
     ); 
     }

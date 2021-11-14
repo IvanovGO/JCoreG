@@ -107,11 +107,13 @@ public static void main(String[] args){
            	case ("r"):
            	 System.out.print("Input file name:");
            	  File jcsv = new File(in.nextLine());
+           	  Integer readcount = 0;
            	  if(jcsv.exists()) {
 		            System.out.println("File exists");
 			    try (FileReader jcsv_reader = new FileReader(jcsv)){
 			    Scanner jcsv_scanner = new Scanner (jcsv_reader);
 			    while(jcsv_scanner.hasNextLine()){
+			    readcount++;
 			    Student tst = new Student(true);
 			    String[] tokens = jcsv_scanner.nextLine().split(";");
 			    tst.LastName=tokens[0];
@@ -123,7 +125,9 @@ public static void main(String[] args){
     			    tst.Street=tokens[6];
 			    tst.House=Integer.parseInt(tokens[7]);
 			    tst.Appartament=Integer.parseInt(tokens[8]);			    
-			    }}
+			    journal.add(tst); 
+			    }  System.out.printf("%d records readed %n",readcount);
+			      }
 			    catch (IOException ex){
 			       System.out.println(ex.getMessage());
 			    }
@@ -131,7 +135,7 @@ public static void main(String[] args){
 			        else
 			            System.out.println("File not found");
 
-           	  
+
 	
            	break;
            	case("q"):
