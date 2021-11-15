@@ -78,7 +78,9 @@ static class GenStudent{
     switch (mm) {
     case 2: //february
     if (this.isLeap(yy)) {md=29;} else {md=28;} break;
-    case (4):case (6):case (9):case (10):case (11): md=30;break;
+    case (4):case (6):case (9):case (10):case (11): md=30;
+    
+    break;
     default: md=31;    }
     s+=";"+rnd.nextInt(md);//dd
   return s;
@@ -86,13 +88,13 @@ static class GenStudent{
   
   String genPhone(){
     Random rnd = new Random();
-        switch (rnd.nextInt(3)){
+        switch (rnd.nextInt(2)){
+        case 0:
+        return "066"+Integer.toString(rnd.nextInt(9999999));
         case 1:
-        return ";066"+Integer.toString(rnd.nextInt(9999999));
+        return "050"+Integer.toString(rnd.nextInt(9999999));
         case 2:
-        return ";050"+Integer.toString(rnd.nextInt(9999999));
-        case 3:
-        return ";097"+Integer.toString(rnd.nextInt(9999999));
+        return "097"+Integer.toString(rnd.nextInt(9999999));
         } return""; }
    
    String genAdress(){
@@ -101,7 +103,7 @@ static class GenStudent{
     Integer appartament = rnd.nextInt(100);
     String s=this.getRandom();
     while (this.isMale(s)) s=this.getRandom();
-    s=";ул."+makeSecName(s)+";"+Integer.toString(house)+";"+Integer.toString(appartament);
+    s="ул."+makeSecName(s)+";"+Integer.toString(house)+";"+Integer.toString(appartament);
     return s;
    }
 }
@@ -120,7 +122,7 @@ return;}
 
 for (int i=0;i<Integer.parseInt(param[1]);i++){
     String s = new String(names.getRandom());
-    System.out.printf("%s;%s;%s%s%s%n",
+    System.out.printf("%s;%s;%s;%s;%s%n",
     s,//name
     names.makeSecName(s),//surename
     names.genPhone(),

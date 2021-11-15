@@ -36,7 +36,7 @@ public class JournalNote{
  	
          String LastName;
          String FirstName;
-	 int    Phone;
+	 String Phone;
 	// Date   Birth;
         int yy;
         int mm;
@@ -55,7 +55,7 @@ public class JournalNote{
     System.out.print("Input name: ");
          FirstName=in.nextLine();
     System.out.print("Input phone: ");
-         Phone=in.nextInt();
+         Phone=in.nextLine();
        System.out.print("Input year of birth: ");
          yy=in.nextInt();
     System.out.print("Input month of birth: ");
@@ -77,7 +77,7 @@ public class JournalNote{
 	static  void PrintJournal(Student stdnt){
     System.out.printf("surname:%15s ", stdnt.LastName );
     System.out.printf("name:%15s ", stdnt.FirstName );
-    System.out.printf("phone number:%10d ", stdnt.Phone );
+    System.out.printf("phone number:%10s ", stdnt.Phone );
     System.out.printf("date of birth: %4d/%2d/%2d ", stdnt.yy, stdnt.mm, stdnt.dd );
     System.out.printf("adress: %s b%3d f%3d%n", stdnt.Street, stdnt.House, stdnt.Appartament );
  	 }
@@ -118,7 +118,7 @@ public static void main(String[] args){
 			    String[] tokens = jcsv_scanner.nextLine().split(";");
 			    tst.LastName=tokens[0];
 			    tst.FirstName=tokens[1];
-			    tst.Phone=Integer.parseInt(tokens[2]);
+			    tst.Phone=tokens[2];
 	  		    tst.yy=Integer.parseInt(tokens[3]);
 			    tst.mm=Integer.parseInt(tokens[4]);
 			    tst.dd=Integer.parseInt(tokens[5]);
