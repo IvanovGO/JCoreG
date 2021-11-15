@@ -72,15 +72,30 @@ public class JournalNote{
  	    }
  	    }
  	    
+  public boolean equals(Student st){
+       if(
+       this.LastName==st.LastName &
+       this.FirstName==st.FirstName &
+       this.Phone==st.Phone &
+       this.yy==st.yy &
+       this.mm==st.mm &
+       this.dd==st.dd &
+       this.Street==st.Street &
+       this.House==st.House &
+       this.Appartament==st.Appartament 
+       ) return true; else return false;
+  }
 	
-	 	      }  
+	 	      }  //Student
+	 	      
 	static  void PrintJournal(Student stdnt){
     System.out.printf("surname:%15s ", stdnt.LastName );
     System.out.printf("name:%15s ", stdnt.FirstName );
     System.out.printf("phone number:%10s ", stdnt.Phone );
     System.out.printf("date of birth: %4d/%2d/%2d ", stdnt.yy, stdnt.mm, stdnt.dd );
-    System.out.printf("adress: %s b%3d f%3d%n", stdnt.Street, stdnt.House, stdnt.Appartament );
+    System.out.printf("adress: %s,%3d,%3d%n", stdnt.Street, stdnt.House, stdnt.Appartament );
  	 }
+ 	 
  	 
 
    
@@ -93,7 +108,7 @@ public static void main(String[] args){
     
   while(false==false) {  
         
-         System.out.print("n - New record; l - list journal; r-load; q - quit  What is your choise? ");  
+         System.out.print("n - New record; l - list journal; r-load; r - test eq; c - clear; q - quit  What is your choise? ");  
            switch (in.nextLine()){
            	case("n"):
            	Student tmp_stnt = new Student(false);
@@ -116,8 +131,8 @@ public static void main(String[] args){
 			    readcount++;
 			    Student tst = new Student(true);
 			    String[] tokens = jcsv_scanner.nextLine().split(";");
-			    tst.LastName=tokens[0];
-			    tst.FirstName=tokens[1];
+			    tst.FirstName=tokens[0];
+			    tst.LastName=tokens[1];
 			    tst.Phone=tokens[2];
 	  		    tst.yy=Integer.parseInt(tokens[3]);
 			    tst.mm=Integer.parseInt(tokens[4]);
@@ -137,6 +152,16 @@ public static void main(String[] args){
 
 
 	
+           	break;
+           	case ("e"):
+           	for (Student st:journal ){
+           	System.out.printf("%s %b %n",st.FirstName,st.equals(st));
+           	}
+           	break;
+           	case("c"):
+		    System.out.print("Are you shure?(type - 1)");
+		 
+		 if (in.nextInt()==1)   	 journal.clear();
            	break;
            	case("q"):
            	return;

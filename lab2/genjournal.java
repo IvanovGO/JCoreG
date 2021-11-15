@@ -70,7 +70,8 @@ static class GenStudent{
   
   String genBrthDate(){
   Random rnd = new Random();
-  Integer yy=1970+rnd.nextInt(YearMonth.now().getYear()-1970-16);
+  Integer yy=YearMonth.now().getYear()-16-rnd.nextInt(5);//regular student
+  if (rnd.nextInt(10)==5) yy=YearMonth.now().getYear()-rnd.nextInt(65-16)+16;//mature student
   String s=Integer.toString(yy);//yy
   Integer mm = rnd.nextInt(12);
     s+=";"+Integer.toString(mm);//mm
@@ -88,19 +89,19 @@ static class GenStudent{
   
   String genPhone(){
     Random rnd = new Random();
-        switch (rnd.nextInt(2)){
+        switch (rnd.nextInt(3)){
         case 0:
-        return "066"+Integer.toString(rnd.nextInt(9999999));
+        return "066"+Integer.toString(rnd.nextInt(8999999)+1000000);
         case 1:
-        return "050"+Integer.toString(rnd.nextInt(9999999));
+        return "050"+Integer.toString(rnd.nextInt(8999999)+1000000);
         case 2:
-        return "097"+Integer.toString(rnd.nextInt(9999999));
+        return "097"+Integer.toString(rnd.nextInt(8999999)+1000000);
         } return""; }
    
    String genAdress(){
     Random rnd = new Random();
-    Integer house = rnd.nextInt(200);
-    Integer appartament = rnd.nextInt(100);
+    Integer house = rnd.nextInt(200)+1;
+    Integer appartament = rnd.nextInt(100)+1;
     String s=this.getRandom();
     while (this.isMale(s)) s=this.getRandom();
     s="ул."+makeSecName(s)+";"+Integer.toString(house)+";"+Integer.toString(appartament);
