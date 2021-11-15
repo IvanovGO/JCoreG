@@ -15,6 +15,7 @@
 
 import java.util.*;
 import java.io.*;
+//import org.json.*;
 
 public class JournalNote{
 	
@@ -86,6 +87,9 @@ public class JournalNote{
        ) return true; else return false;
   }
 	
+/*	 public JSONObject JSON_export(){
+	
+	}*/
 	 	      }  //Student
 	 	      
 	static  void PrintJournal(Student stdnt){
@@ -159,7 +163,7 @@ public static void main(String[] args){
            	}
            	break;
            	case("c"):
-		    System.out.print("Are you shure?(type - 1)");
+		    System.out.print("Are you shure?(type - 1 if ya)");
 		 
 		 if (in.nextInt()==1)   	 journal.clear();
            	break;
